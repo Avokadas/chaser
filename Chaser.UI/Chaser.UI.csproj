@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultSpriteFactory.cs" />
+    <Compile Include="ISpriteFactory.cs" />
     <Compile Include="UserKeys.cs" />
     <Compile Include="RenderingEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

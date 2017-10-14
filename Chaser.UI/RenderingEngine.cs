@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Chaser.Game;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -11,22 +13,26 @@ namespace Chaser.UI
         private ContextSettings _contextSettings;
         private static Sprite playerSprite = new Sprite(new Texture("Assets/player.jpg"));
         private static Sprite chaserSprite = new Sprite(new Texture("Assets/doge.jpg"));
-        private UserKeys userInput= new UserKeys();
+        private UserKeys _userInput= new UserKeys();
         
+        private List<Sprite> _terrainObjects = new List<Sprite>();
+        private ISpriteFactory _spriteFactory;
 
-        public RenderingEngine()
+        public RenderingEngine(ISpriteFactory spriteFactory)
         {
+            _spriteFactory = spriteFactory;
             _contextSettings = new ContextSettings();
             Window = new RenderWindow(new VideoMode(1024, 768), "Chaser game", Styles.Default, _contextSettings);
             Window.Closed += Window_Closed;
-            Window.KeyPressed += userInput.KeyPressed;
-            Window.KeyReleased += userInput.KeyReleased;
-            playerSprite.Position = new Vector2f(100, 100);
-            playerSprite.TextureRect = new IntRect(100, 100, 100, 100);
-            
             chaserSprite.Position = new Vector2f(500, 400);
             chaserSprite.TextureRect = new IntRect(100, 100, 100, 100);
+            Window.KeyPressed += _userInput.KeyPressed;
+            Window.KeyReleased += _userInput.KeyReleased;
 
+            foreach (var gameObject in GameStateSingleton.Instance.State.Map.TerrainObjects)
+            {
+                _terrainObjects.Add(_spriteFactory.CreateSprite(gameObject));
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -40,23 +46,23 @@ namespace Chaser.UI
             var x = oldPos.X;
             var y = oldPos.Y;
 
-            if (userInput.Close)
+            if (_userInput.Close)
             {
                 Window.Close();
             }
-            if (userInput.Up)
+            if (_userInput.Up)
             {
                 y -= 1;
             }
-            if (userInput.Down)
+            if (_userInput.Down)
             {
                 y += 1;
             }
-            if (userInput.Left)
+            if (_userInput.Left)
             {
                 x -= 1;
             }
-            if (userInput.Right)
+            if (_userInput.Right)
             {
                 x += 1;
             }
@@ -103,6 +109,10 @@ namespace Chaser.UI
             Window.Clear();
             playerSprite.Draw(Window, RenderStates.Default);
             chaserSprite.Draw(Window, RenderStates.Default);
+            foreach (var sprite in _terrainObjects)
+            { 
+                sprite.Draw(Window, RenderStates.Default);
+            }
             Window.Display();
         }
     }

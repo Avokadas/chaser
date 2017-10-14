@@ -8,7 +8,7 @@ namespace Chaser
 {
     class Program
     {
-        private static RenderingEngine _renderingEngine = new RenderingEngine();
+        private static RenderingEngine _renderingEngine = new RenderingEngine(new DefaultSpriteFactory());
 
         static void Main()
         {
