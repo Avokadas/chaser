@@ -49,6 +49,8 @@
     <Compile Include="IGameStateBuilder.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TerrainObjects\TerrainObject.cs" />
+    <Compile Include="TerrainObjects\Wall.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
