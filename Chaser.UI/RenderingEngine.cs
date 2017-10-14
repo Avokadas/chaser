@@ -11,8 +11,8 @@ namespace Chaser.UI
     {
         public RenderWindow Window { get; }
         private ContextSettings _contextSettings;
-        private static Sprite playerSprite = new Sprite(new Texture("Assets/player.jpg"));
-        private static Sprite chaserSprite = new Sprite(new Texture("Assets/doge.jpg"));
+        private static Sprite playerSprite;
+        private static Sprite chaserSprite;
         private UserKeys _userInput= new UserKeys();
         
         private List<Sprite> _terrainObjects = new List<Sprite>();
@@ -24,10 +24,11 @@ namespace Chaser.UI
             _contextSettings = new ContextSettings();
             Window = new RenderWindow(new VideoMode(1024, 768), "Chaser game", Styles.Default, _contextSettings);
             Window.Closed += Window_Closed;
-            chaserSprite.Position = new Vector2f(500, 400);
-            chaserSprite.TextureRect = new IntRect(100, 100, 100, 100);
             Window.KeyPressed += _userInput.KeyPressed;
             Window.KeyReleased += _userInput.KeyReleased;
+
+            chaserSprite = _spriteFactory.CreateSprite(GameStateSingleton.Instance.State.Chaser);
+            playerSprite = _spriteFactory.CreateSprite(GameStateSingleton.Instance.State.Player);
 
             foreach (var gameObject in GameStateSingleton.Instance.State.Map.TerrainObjects)
             {

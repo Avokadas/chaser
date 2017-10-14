@@ -16,12 +16,12 @@ namespace Chaser.Game
 
         public void AddChaser()
         {
-           _gameState.Chaser = new Chaser();
+           _gameState.Chaser = new Chaser { Width = 100, Height = 100 };
         }
 
         public void AddPlayer()
         {
-            _gameState.Player = new Player();
+            _gameState.Player = new Player{Width = 100, Height = 100};
         }
 
         public void AddGameMap()
