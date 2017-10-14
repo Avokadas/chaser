@@ -1,15 +1,24 @@
 ﻿using System.Data;
+using System.Diagnostics;
+using SFML.Graphics;
 using SFML.Window;
 
 namespace Chaser.UI
 {
-    public class UserKeys
+    public class UserInput
     {
         public bool Up { get; set; }
         public bool Down { get; set; }
         public bool Left { get; set; }
         public bool Right { get; set; }
         public bool Close { get; set; }
+        private RenderWindow window { get; set; }
+
+
+        public UserInput (RenderWindow window)
+        {
+            this.window = window;
+        }
 
         public void KeyReleased(object sender, KeyEventArgs e)
         {
