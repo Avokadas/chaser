@@ -22,7 +22,7 @@ namespace Chaser
             window.KeyPressed += userInput.KeyPressed;
             window.KeyReleased += userInput.KeyReleased;
 
-            _renderingEngine = new RenderingEngine(window);
+            _renderingEngine = new RenderingEngine(window, new DefaultSpriteFactory());
 
             while (_renderingEngine.window.IsOpen)
             {
