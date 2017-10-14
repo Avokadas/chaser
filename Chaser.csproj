@@ -100,13 +100,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chaser.UI\Chaser.UI.csproj">
-      <Project>{0887577c-0001-433f-885b-de9b496c0f56}</Project>
-      <Name>Chaser.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="Chaser.Game\Chaser.Game.csproj">
       <Project>{76afd933-d08a-4c93-a1da-95ba37f8d6a2}</Project>
       <Name>Chaser.Game</Name>
+    </ProjectReference>
+    <ProjectReference Include="Chaser.UI\Chaser.UI.csproj">
+      <Project>{0887577c-0001-433f-885b-de9b496c0f56}</Project>
+      <Name>Chaser.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
