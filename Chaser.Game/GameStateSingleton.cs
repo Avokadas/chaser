@@ -11,7 +11,7 @@ namespace Chaser.Game
             IGameStateBuilder builder = new GameStateBuilder();
             builder.AddChaser();
             builder.AddPlayer();
-            builder.AddTerrainObjects();
+            builder.AddGameMap();
             State = builder.GetGameState();
         }
 

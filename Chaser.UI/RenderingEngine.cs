@@ -14,9 +14,7 @@ namespace Chaser.UI
 
         public RenderingEngine()
         {
-            Window = new RenderWindow(new VideoMode(1024,768), "Chaser game");
             _contextSettings = new ContextSettings();
-
             Window = new RenderWindow(new VideoMode(1024, 768), "Chaser", Styles.Default, _contextSettings);
             Window.Closed += Window_Closed;
             Window.KeyPressed += userInput.KeyPressed;

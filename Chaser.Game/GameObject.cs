@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Chaser
+﻿namespace Chaser.Game
 {
-    class GameObject
+    public class GameObject
     {
         public int X { get; set; }
         public int Y { get; set; }

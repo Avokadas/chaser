@@ -4,7 +4,7 @@ namespace Chaser.Game
     { 
         void AddChaser();
         void AddPlayer();
-        void AddTerrainObjects();
+        void AddGameMap();
         GameState GetGameState();
     }
 }

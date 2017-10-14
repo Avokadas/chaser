@@ -1,9 +1,11 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Diagnostics;
 
 namespace Chaser.Game
 {
     public class GameState
     {
-        //TODO do game stuff
+        public Player Player { get; set; }
+        public GameMap Map { get; set; }
+        public Chaser Chaser { get; set; }
     }
 }

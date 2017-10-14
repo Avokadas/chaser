@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Chaser.Game
 {
     public class GameStateBuilder : IGameStateBuilder
@@ -11,22 +13,26 @@ namespace Chaser.Game
 
         public void AddChaser()
         {
-            
+           _gameState.Chaser = new Chaser();
         }
 
         public void AddPlayer()
         {
-            
+            _gameState.Player = new Player();
         }
 
-        public void AddTerrainObjects()
+        public void AddGameMap()
         {
-            
+            _gameState.Map = new GameMap();
         }
 
         public GameState GetGameState()
         {
             return _gameState;
         }
+    }
+
+    public class GameMap
+    {
     }
 }
