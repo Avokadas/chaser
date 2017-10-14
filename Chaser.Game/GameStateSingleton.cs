@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Chaser.Game
+﻿namespace Chaser.Game
 {
-
     public class GameStateSingleton
     {
         private static GameStateSingleton _instance;
@@ -17,5 +10,11 @@ namespace Chaser.Game
 
         public static GameStateSingleton Instance => _instance ?? (_instance = new GameStateSingleton());
 
+        public GameState State { get; set; }
+    }
+
+    public class GameState
+    {
+        //TODO: All stuff that gets rendered goes here
     }
 }
