@@ -17,6 +17,7 @@ namespace Chaser
             _window.Closed += Window_Closed;
             _window.KeyPressed += Window_KeyPressed;
             dogSprite.Position = new Vector2f(100, 100);
+            dogSprite.TextureRect = new IntRect(100,100,100,100);
 
             while (_window.IsOpen)
             {
