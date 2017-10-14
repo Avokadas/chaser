@@ -98,6 +98,9 @@
     <Content Include="Assets\doge.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Wall.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\player.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
