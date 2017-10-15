@@ -61,6 +61,7 @@
     <Compile Include="Commands\MoveCommand.cs" />
     <Compile Include="Commands\NullCommand.cs" />
     <Compile Include="Commands\ShootBulletCommand.cs" />
+    <Compile Include="Directions.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="GameStateBuilder.cs" />

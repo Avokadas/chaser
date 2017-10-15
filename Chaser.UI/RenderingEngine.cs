@@ -3,6 +3,7 @@ using System.Linq;
 using Chaser.Game;
 using SFML.Graphics;
 using SFML.System;
+using System;
 
 namespace Chaser.UI
 {
@@ -42,6 +43,15 @@ namespace Chaser.UI
                 GameStateSingleton.Instance.State.Chaser.X,
                 GameStateSingleton.Instance.State.Chaser.Y);
 
+            foreach (var sprite in _bullets)
+            {
+                var spriteIndex = _bullets.IndexOf(sprite);
+
+                sprite.Position = new Vector2f(
+                    GameStateSingleton.Instance.State.Bullets[spriteIndex].X,
+                    GameStateSingleton.Instance.State.Bullets[spriteIndex].Y
+                );
+            }
             Window.DispatchEvents();
             Window.Clear();
             _playerSprite.Draw(Window, RenderStates.Default);
