@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Chaser.Game;
 using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
 
 namespace Chaser.UI
 {
     public class RenderingEngine
     {
-        public RenderWindow window { get; set; }
+        public RenderWindow Window { get; }
         private static Sprite _playerSprite;
         private static Sprite _chaserSprite;
         private List<Sprite> _terrainObjects = new List<Sprite>();
@@ -19,7 +17,7 @@ namespace Chaser.UI
         public RenderingEngine(RenderWindow window, ISpriteFactory spriteFactory)
         {
             _spriteFactory = spriteFactory;
-            this.window = window;
+            Window = window;
 
             _chaserSprite = _spriteFactory.CreateSprite(GameStateSingleton.Instance.State.Chaser);
             _playerSprite = _spriteFactory.CreateSprite(GameStateSingleton.Instance.State.Player);
@@ -48,21 +46,21 @@ namespace Chaser.UI
                 GameStateSingleton.Instance.State.Chaser.X,
                 GameStateSingleton.Instance.State.Chaser.Y);
 
-            window.DispatchEvents();
-            window.Clear();
-            _playerSprite.Draw(window, RenderStates.Default);
-            _chaserSprite.Draw(window, RenderStates.Default);
+            Window.DispatchEvents();
+            Window.Clear();
+            _playerSprite.Draw(Window, RenderStates.Default);
+            _chaserSprite.Draw(Window, RenderStates.Default);
 
             foreach (var sprite in _terrainObjects)
             {
-                sprite.Draw(window, RenderStates.Default);
+                sprite.Draw(Window, RenderStates.Default);
             }
 
             foreach (var sprite in _bullets)
             {
-                sprite.Draw(window, RenderStates.Default);
+                sprite.Draw(Window, RenderStates.Default);
             }
-            window.Display();
+            Window.Display();
         }
     }
 }

@@ -5,20 +5,13 @@ using SFML.Window;
 
 namespace Chaser.UI
 {
-    public class UserInput
+    public class UserInputConfiguration
     {
-        public bool Up { get; set; }
-        public bool Down { get; set; }
-        public bool Left { get; set; }
-        public bool Right { get; set; }
-        public bool Close { get; set; }
-        private RenderWindow window { get; set; }
-
-
-        public UserInput (RenderWindow window)
-        {
-            this.window = window;
-        }
+        public bool Up { get; private set; }
+        public bool Down { get; private set; }
+        public bool Left { get; private set; }
+        public bool Right { get; private set; }
+        public bool Close { get; private set; }
 
         public void KeyReleased(object sender, KeyEventArgs e)
         {

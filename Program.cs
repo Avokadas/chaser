@@ -11,49 +11,26 @@ namespace Chaser
     class Program
     {
         private static RenderingEngine _renderingEngine;
-        private static UserInput userInput;
+        private static UserInputProcessor _inputProcessor;
 
         static void Main()
         {
             var window = new RenderWindow(new VideoMode(1024, 768), "Chaser", Styles.Default, new ContextSettings());
             var timer = new Clock();
-            userInput = new UserInput(window);
+            _inputProcessor = new UserInputProcessor(new UserInputConfiguration(), window);
 
-            window.KeyPressed += userInput.KeyPressed;
-            window.KeyReleased += userInput.KeyReleased;
+            window.KeyPressed += _inputProcessor.UserInputConfiguration.KeyPressed;
+            window.KeyReleased += _inputProcessor.UserInputConfiguration.KeyReleased;
+            ;
 
             _renderingEngine = new RenderingEngine(window, new DefaultSpriteFactory());
 
-            while (_renderingEngine.window.IsOpen)
+            while (_renderingEngine.Window.IsOpen)
             {
-                ProcessInput(window);
+                _inputProcessor.Process();
                 Chase();
                 ShootBullet(_renderingEngine, timer);
                 _renderingEngine.RenderGameState();
-            }
-        }
-
-        private static void ProcessInput(RenderWindow window)
-        {
-            if (userInput.Close)
-            {
-                window.Close();
-            }
-            if (userInput.Up)
-            {
-                GameStateSingleton.Instance.State.Player.Y -= 1;
-            }
-            if (userInput.Down)
-            {
-                GameStateSingleton.Instance.State.Player.Y += 1;
-            }
-            if (userInput.Left)
-            {
-                GameStateSingleton.Instance.State.Player.X -= 1;
-            }
-            if (userInput.Right)
-            {
-                GameStateSingleton.Instance.State.Player.X += 1;
             }
         }
 
