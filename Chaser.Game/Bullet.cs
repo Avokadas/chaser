@@ -6,6 +6,7 @@ namespace Chaser.Game
 {
     public class Bullet : GameObject, ISmart
     {
+
         public Bullet()
         {
             X = GameStateSingleton.Instance.State.Chaser.X;

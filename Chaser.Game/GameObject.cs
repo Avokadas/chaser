@@ -1,4 +1,6 @@
-﻿namespace Chaser.Game
+﻿using System;
+
+namespace Chaser.Game
 {
     public class GameObject
     {
@@ -14,12 +16,15 @@
             Width = width;
             Height = height;
             IsCollidable = isCollidable;
+            Id = Guid.NewGuid();
         }
 
         public GameObject()
         {
+            Id = Guid.NewGuid();
         }
 
+        public Guid Id { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public int Xpic { get; set; }

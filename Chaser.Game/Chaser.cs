@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
 using Chaser.Game.Commands;
 using SFML.System;
 
@@ -15,6 +14,7 @@ namespace Chaser.Game
             Y = 400;
             Width = 100;
             Height = 100;
+            _timer.Restart();
         }
 
         public List<Command> ReturnNextMove()

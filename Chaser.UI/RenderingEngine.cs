@@ -29,17 +29,12 @@ namespace Chaser.UI
             }
         }
 
-        public void AddBullet(ISpriteFactory spriteFactory)
-        {
-            _spriteFactory = spriteFactory;
-            GameStateSingleton.Instance.State.Bullets.Add(new Bullet());
-            var lastBullet = GameStateSingleton.Instance.State.Bullets.Last();
-
-            _bullets.Add(_spriteFactory.CreateSprite(lastBullet));
-        }
-
         public void RenderGameState()
         {
+            //Next 2 lines might be shit performance
+            _bullets.Clear();
+            GameStateSingleton.Instance.State.Bullets.ForEach(x => _bullets.Add(_spriteFactory.CreateSprite(x)));
+
             _playerSprite.Position = new Vector2f(
                 GameStateSingleton.Instance.State.Player.X,
                 GameStateSingleton.Instance.State.Player.Y);
