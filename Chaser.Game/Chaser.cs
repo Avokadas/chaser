@@ -7,7 +7,7 @@ namespace Chaser.Game
 {
     public class Chaser : GameObject, ISmart
     {
-        private Clock _timer = new Clock();
+        private readonly Clock _timer = new Clock();
 
         public Chaser()
         {
@@ -19,9 +19,7 @@ namespace Chaser.Game
 
         public List<Command> ReturnNextMove()
         {
-            var commands = new List<Command>();
-
-            commands.Add(GenerateMoveCommand());
+            var commands = new List<Command> {GenerateMoveCommand()};
 
             if (_timer.ElapsedTime.AsSeconds() > 2)
             {
@@ -40,6 +38,8 @@ namespace Chaser.Game
             var x = GameStateSingleton.Instance.State.Chaser.X;
             var y = GameStateSingleton.Instance.State.Chaser.Y;
 
+            int deltaX = 0, deltaY = 0;
+
             var distance = 200;
 
             if (x - playerX > distance || y - playerY > distance
@@ -47,23 +47,23 @@ namespace Chaser.Game
             {
                 if (playerX > x)
                 {
-                    x += 1;
+                    deltaX = 1;
                 }
                 if (playerX < x)
                 {
-                    x -= 1;
+                    deltaX = -1;
                 }
                 if (playerY > y)
                 {
-                    y += 1;
+                    deltaY = 1;
                 }
                 if (playerY < y)
                 {
-                    y -= 1;
+                    deltaY = -1;
                 }
             }
 
-            var command = new MoveCommand(this, x, y);
+            var command = new MoveCommand(this, deltaX, deltaY);
             return command;
         }
     }
