@@ -16,12 +16,12 @@ namespace Chaser.Game
 
         public void AddChaser()
         {
-           _gameState.Chaser = new Chaser { Width = 100, Height = 100 };
+           _gameState.Chaser = new Chaser { X = 100, Y = 200, Width = 100, Height = 100 };
         }
 
         public void AddPlayer()
         {
-            _gameState.Player = new Player{Width = 100, Height = 100};
+            _gameState.Player = new Player{ X = 100, Y = 100, Width = 100, Height = 100 };
         }
 
         public void AddGameMap()
@@ -30,8 +30,8 @@ namespace Chaser.Game
             {
                 TerrainObjects = new GameObject[]
                 {
-                    new Wall(200, 300, 500, 200),
-                    new Wall(500, 500, 200, 300)
+                    new Wall(200, 300, 0, 0, 500, 200),
+                    new Wall(500, 500, 0, 0, 200, 300)
                 }
             };
         }
