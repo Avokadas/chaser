@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
@@ -26,13 +27,42 @@ namespace Chaser.Game
 
         public void AddGameMap()
         {
+            var longWallPrototype = new WallPrototype(0, 0, 0, 0, 500, 100);
+            var tallWallPrototype = new WallPrototype(0, 0, 0, 0, 100, 500);
+            var squareWallPrototype = new WallPrototype(0, 0, 0, 0, 100, 100);
+
+            const int numberOfWalls = 5;
+            var random = new Random();
+
+            var walls = new List<GameObject>();
+
+            for (var i = 0; i < numberOfWalls; i++)
+            {
+                WallPrototype wall;
+                switch (random.Next(1, 4))
+                {
+                    case 1:
+                        wall = squareWallPrototype.Clone();
+                        break;
+                    case 2:
+                        wall = longWallPrototype.Clone();
+                        break;
+                    case 3:
+                        wall = tallWallPrototype.Clone();
+                        break;
+                    default:
+                        wall = squareWallPrototype.Clone();
+                        break;
+                }
+                wall.X = random.Next(0, 1000);
+                wall.Y = random.Next(0, 1000);
+
+                walls.Add(wall);
+            }
+
             _gameState.Map = new GameMap
             {
-                TerrainObjects = new GameObject[]
-                {
-                    new Wall(200, 300, 0, 0, 500, 200),
-                    new Wall(500, 500, 0, 0, 200, 300)
-                }
+                TerrainObjects = walls
             };
         }
 
