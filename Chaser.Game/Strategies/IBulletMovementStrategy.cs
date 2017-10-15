@@ -1,6 +1,6 @@
 using Chaser.Game.Commands;
 
-namespace Chaser.Game
+namespace Chaser.Game.Strategies
 {
     public interface IBulletMovementStrategy
     {

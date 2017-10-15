@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Chaser.Game.Commands;
+using Chaser.Game.Strategies;
 using SFML.System;
 
 namespace Chaser.Game
