@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Chaser.Game;
 using SFML.Graphics;
 using SFML.System;
@@ -31,8 +32,8 @@ namespace Chaser.UI
         public void AddBullet(ISpriteFactory spriteFactory)
         {
             _spriteFactory = spriteFactory;
-            GameStateSingleton.Instance.State.BulletList.Bullets.Add(new Bullet());
-            var lastBullet = GameStateSingleton.Instance.State.BulletList.Bullets[GameStateSingleton.Instance.State.BulletList.Bullets.Count - 1];
+            GameStateSingleton.Instance.State.Bullets.Add(new Bullet());
+            var lastBullet = GameStateSingleton.Instance.State.Bullets.Last();
 
             _bullets.Add(_spriteFactory.CreateSprite(lastBullet));
         }

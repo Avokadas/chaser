@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Collections.Generic;
+using Chaser.Game.Commands;
 
 namespace Chaser.Game
 {
@@ -8,6 +9,15 @@ namespace Chaser.Game
         public Player Player { get; set; }
         public GameMap Map { get; set; }
         public Chaser Chaser { get; set; }
-        public BulletList BulletList { get; set; }
+        public List<Bullet> Bullets { get; set; } = new List<Bullet>();
+
+        public void MutateGameState()
+        {
+            var commands = new List<Command>();
+            commands.AddRange(Chaser.ReturnNextMove());
+            Bullets.ForEach(x => commands.AddRange(x.ReturnNextMove()));
+
+            commands.ForEach(x => x.Execute());
+        }
     }
 }

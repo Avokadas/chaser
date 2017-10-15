@@ -36,15 +36,6 @@ namespace Chaser.Game
             };
         }
 
-        public void AddBullets()
-        {
-            _gameState.BulletList = new BulletList
-            {
-                Bullets = new List<GameObject> {
-                }
-            };
-
-        }
         public GameState GetGameState()
         {
             return _gameState;
@@ -54,10 +45,5 @@ namespace Chaser.Game
     public class GameMap
     {
         public IEnumerable<GameObject> TerrainObjects { get; set; }
-    }
-
-    public class BulletList
-    {
-        public List<GameObject> Bullets { get; set; }
     }
 }
