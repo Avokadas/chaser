@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Chaser.Game;
 using NUnit.Framework;
 
 
@@ -14,7 +10,13 @@ namespace Chaser.PatternExamples
         [Test]
         public void SingletonPatternExample()
         {
-            
+            var starterState = GameStateSingleton.Instance.State.GameRunning;
+
+            GameStateSingleton.Instance.State.GameRunning = false;
+
+            var modifiedState = GameStateSingleton.Instance.State.GameRunning;
+
+            Assert.AreNotEqual(starterState, modifiedState);
         }
     }
 }
