@@ -21,7 +21,6 @@ namespace Chaser.Game
         public List<Command> ReturnNextMove()
         {
             var commands = new List<Command> {GenerateMoveCommand()};
-            MoveBullets();
             if (_timer.ElapsedTime.AsSeconds() > 2)
             {
                 _timer.Restart();
@@ -70,55 +69,6 @@ namespace Chaser.Game
 
             var command = new MoveCommand(this, deltaX, deltaY);
             return command;
-        }
-
-        private static void MoveBullets()
-        {
-            foreach (var bullet in GameStateSingleton.Instance.State.Bullets)
-            {
-                var x = bullet.X;
-                var y = bullet.Y;
-
-                if (bullet.Direction == Directions.Left)
-                {
-                    x -= 1;
-                }
-                if (bullet.Direction == Directions.Right)
-                {
-                    x += 1;
-                }
-                if (bullet.Direction == Directions.Up)
-                {
-                    y += 1;
-                }
-                if (bullet.Direction == Directions.Down)
-                {
-                    y -= 1;
-                }
-                if (bullet.Direction == Directions.UpLeft)
-                {
-                    x -= 1;
-                    y += 1;
-                }
-                if (bullet.Direction == Directions.UpRight)
-                {
-                    x += 1;
-                    y += 1;
-                }
-                if (bullet.Direction == Directions.DownLeft)
-                {
-                    x -= 1;
-                    y -= 1;
-                }
-                if (bullet.Direction == Directions.DownRight)
-                {
-                    x += 1;
-                    y -= 1;
-                }
-
-                bullet.X = x;
-                bullet.Y = y;
-            }
         }
     }
 }
