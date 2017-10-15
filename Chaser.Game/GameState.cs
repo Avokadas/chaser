@@ -1,11 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Collections.Generic;
+using System.Dynamic;
 using Chaser.Game.Commands;
 
 namespace Chaser.Game
 {
     public class GameState
     {
+        public bool GameRunning { get; set; }
         public Player Player { get; set; }
         public GameMap Map { get; set; }
         public Chaser Chaser { get; set; }

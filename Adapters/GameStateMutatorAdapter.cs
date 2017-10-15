@@ -9,7 +9,10 @@ namespace Chaser.Adapters
 
         public void PerformLoopAction()
         {
-            _state.MutateGameState();
+            if (GameStateSingleton.Instance.State.GameRunning)
+            {
+                _state.MutateGameState();
+            }
         }
     }
 }

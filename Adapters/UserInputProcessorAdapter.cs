@@ -1,4 +1,5 @@
-﻿using Chaser.UI;
+﻿using Chaser.Game;
+using Chaser.UI;
 
 namespace Chaser.Adapters
 {
@@ -13,7 +14,10 @@ namespace Chaser.Adapters
 
         public void PerformLoopAction()
         {
-            _inputProcessor.Process();
+            if (GameStateSingleton.Instance.State.GameRunning)
+            {
+                _inputProcessor.Process();
+            }
         }
     }
 }

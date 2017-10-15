@@ -5,16 +5,16 @@ namespace Chaser
 {
     public class GameLoopEngine
     {
-        private readonly List<ILoopAdapter> _loopAdapers = new List<ILoopAdapter>();
+        private readonly List<ILoopAdapter> _loopAdapters = new List<ILoopAdapter>();
 
         public void RegisterComponent(ILoopAdapter adapter)
         {
-            _loopAdapers.Add(adapter);
+            _loopAdapters.Add(adapter);
         }
 
         public void Loop()
         {
-            _loopAdapers.ForEach(x => x.PerformLoopAction());
+            _loopAdapters.ForEach(x => x.PerformLoopAction());
         }
     }
 }

@@ -66,6 +66,11 @@ namespace Chaser.Game
             };
         }
 
+        public void SetStartGameState()
+        {
+            _gameState.GameRunning = true;
+        }
+
         public GameState GetGameState()
         {
             return _gameState;

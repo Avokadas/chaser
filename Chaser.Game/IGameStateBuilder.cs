@@ -5,6 +5,7 @@ namespace Chaser.Game
         void AddChaser();
         void AddPlayer();
         void AddGameMap();
+        void SetStartGameState();
         GameState GetGameState();
     }
 }
