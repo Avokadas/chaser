@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using Chaser.Game.Commands;
+using SFML.System;
 
 namespace Chaser.Game
 {
     public class Bullet : GameObject, ISmart
     {
+        private Clock _timer = new Clock();
 
         public Bullet()
         {
@@ -18,6 +20,16 @@ namespace Chaser.Game
 
         public List<Command> ReturnNextMove()
         {
+
+            if (_timer.ElapsedTime.AsSeconds() > 5)
+            {
+                _timer.Restart();
+                return new List<Command>
+                {
+                    new BulletDisintegrateCommand(Id)
+                };
+            }
+
             //Return a new move command which is build based on Direction properties
             return new List<Command>
             {
