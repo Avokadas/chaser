@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bullet.cs" />
     <Compile Include="Chaser.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameState.cs" />

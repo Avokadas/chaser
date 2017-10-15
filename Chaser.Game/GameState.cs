@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Chaser.Game
 {
@@ -7,5 +8,6 @@ namespace Chaser.Game
         public Player Player { get; set; }
         public GameMap Map { get; set; }
         public Chaser Chaser { get; set; }
+        public BulletList BulletList { get; set; }
     }
 }

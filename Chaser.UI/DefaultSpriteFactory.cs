@@ -2,6 +2,7 @@
 using Chaser.Game;
 using Chaser.Game.TerrainObjects;
 using SFML.Graphics;
+using SFML.System;
 
 namespace Chaser.UI
 {
@@ -9,20 +10,33 @@ namespace Chaser.UI
     {
         public Sprite CreateSprite(GameObject obj)
         {
+            if (obj is Bullet)
+            {
+                var sprite = new Sprite(new Texture("Assets/Bullet.jpg"),
+                    new IntRect(obj.X, obj.Y, obj.Width, obj.Height));
+                sprite.Position = new Vector2f(obj.X, obj.Y);
+                return sprite;
+            }
             if (obj is Wall)
             {
-                return new Sprite(new Texture("Assets/Wall.jpg"), 
+                var sprite = new Sprite(new Texture("Assets/Wall.jpg"),
                     new IntRect(obj.X, obj.Y, obj.Width, obj.Height));
+                sprite.Position = new Vector2f(obj.X, obj.Y);
+                return sprite;
             }
             if (obj is Player)
             {
-                return new Sprite(new Texture("Assets/player.jpg"),
+                var sprite = new Sprite(new Texture("Assets/player.jpg"),
                     new IntRect(obj.X, obj.Y, obj.Width, obj.Height));
+                sprite.Position = new Vector2f(obj.X, obj.Y);
+                return sprite;
             }
             if (obj is Game.Chaser)
             {
-                return new Sprite(new Texture("Assets/doge.jpg"),
+                var sprite = new Sprite(new Texture("Assets/doge.jpg"),
                     new IntRect(obj.X, obj.Y, obj.Width, obj.Height));
+                sprite.Position = new Vector2f(obj.X, obj.Y);
+                return sprite;
             }
 
             throw new ArgumentException("No sprite defined for the provided object");

@@ -16,7 +16,7 @@ namespace Chaser
         static void Main()
         {
             var window = new RenderWindow(new VideoMode(1024, 768), "Chaser", Styles.Default, new ContextSettings());
-
+            var timer = new Clock();
             userInput = new UserInput(window);
 
             window.KeyPressed += userInput.KeyPressed;
@@ -28,7 +28,7 @@ namespace Chaser
             {
                 ProcessInput(window);
                 Chase();
-
+                ShootBullet(_renderingEngine, timer);
                 _renderingEngine.RenderGameState();
             }
         }
@@ -89,6 +89,15 @@ namespace Chaser
             }
             GameStateSingleton.Instance.State.Chaser.X = x;
             GameStateSingleton.Instance.State.Chaser.Y = y;
+        }
+
+        private static void ShootBullet(RenderingEngine renderEngine, Clock timer)
+        {
+            if (timer.ElapsedTime.AsSeconds() > 2)
+            {
+                timer.Restart();
+                renderEngine.AddBullet(new DefaultSpriteFactory());
+            }
         }
     }
 }

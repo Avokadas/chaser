@@ -13,6 +13,7 @@ namespace Chaser.UI
         private static Sprite _playerSprite;
         private static Sprite _chaserSprite;
         private List<Sprite> _terrainObjects = new List<Sprite>();
+        private List<Sprite> _bullets = new List<Sprite>();
         private ISpriteFactory _spriteFactory;
 
         public RenderingEngine(RenderWindow window, ISpriteFactory spriteFactory)
@@ -27,6 +28,15 @@ namespace Chaser.UI
             {
                 _terrainObjects.Add(_spriteFactory.CreateSprite(gameObject));
             }
+        }
+
+        public void AddBullet(ISpriteFactory spriteFactory)
+        {
+            _spriteFactory = spriteFactory;
+            GameStateSingleton.Instance.State.BulletList.Bullets.Add(new Bullet());
+            var lastBullet = GameStateSingleton.Instance.State.BulletList.Bullets[GameStateSingleton.Instance.State.BulletList.Bullets.Count - 1];
+
+            _bullets.Add(_spriteFactory.CreateSprite(lastBullet));
         }
 
         public void RenderGameState()
@@ -44,6 +54,11 @@ namespace Chaser.UI
             _chaserSprite.Draw(window, RenderStates.Default);
 
             foreach (var sprite in _terrainObjects)
+            {
+                sprite.Draw(window, RenderStates.Default);
+            }
+
+            foreach (var sprite in _bullets)
             {
                 sprite.Draw(window, RenderStates.Default);
             }
