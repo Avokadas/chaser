@@ -23,6 +23,12 @@ namespace Chaser.UI
             {
                 _window.Close();
             }
+            if (_userInputConfiguration.End)
+            {
+                var facade = new GameFacade(_window);
+                GameStateSingleton.Instance.State.GameRunning = false;
+                facade.RemoveAll();
+            }
             if (_userInputConfiguration.Up)
             {
                 GameStateSingleton.Instance.State.Player.Y -= 1;

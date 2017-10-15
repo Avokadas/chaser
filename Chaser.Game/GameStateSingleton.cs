@@ -12,6 +12,7 @@ namespace Chaser.Game
             builder.AddChaser();
             builder.AddPlayer();
             builder.AddGameMap();
+            builder.SetStartGameState();
             State = builder.GetGameState();
         }
 

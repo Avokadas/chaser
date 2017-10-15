@@ -12,9 +12,14 @@ namespace Chaser.UI
         public bool Left { get; private set; }
         public bool Right { get; private set; }
         public bool Close { get; private set; }
+        public bool End { get; private set; }
 
         public void KeyReleased(object sender, KeyEventArgs e)
         {
+            if (e.Code == Keyboard.Key.Q)
+            {
+                End = false;
+            }
             if (e.Code == Keyboard.Key.W)
             {
                 Up = false;
@@ -38,6 +43,10 @@ namespace Chaser.UI
             if (e.Code == Keyboard.Key.Escape)
             {
                 Close = true;
+            }
+            if (e.Code == Keyboard.Key.Q)
+            {
+                End = true;
             }
             if (e.Code == Keyboard.Key.W)
             {
