@@ -12,7 +12,7 @@ namespace Chaser.Game.Commands
 
         public override void Execute()
         {
-            GameStateSingleton.Instance.State.Bullets.Add(new Bullet(Direction));
+            GameStateSingleton.Instance.State.Bullets.Add(new Bullet(Direction, new StraightTravelBulletStrategy()));
         }
     }
 }

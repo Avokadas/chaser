@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chaser.Game", "Chaser.Game\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chaser.UI", "Chaser.UI\Chaser.UI.csproj", "{0887577C-0001-433F-885B-DE9B496C0F56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chaser.PatternExamples", "..\Chaser.PatternExamples\Chaser.PatternExamples.csproj", "{159A32AB-B2B4-4197-AF04-75B7CF78F417}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chaser.PatternExamples", "Chaser.PatternExamples\Chaser.PatternExamples.csproj", "{49CAE9BF-47C5-4A9D-8945-365275C1D851}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{0887577C-0001-433F-885B-DE9B496C0F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0887577C-0001-433F-885B-DE9B496C0F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0887577C-0001-433F-885B-DE9B496C0F56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{159A32AB-B2B4-4197-AF04-75B7CF78F417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{159A32AB-B2B4-4197-AF04-75B7CF78F417}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{159A32AB-B2B4-4197-AF04-75B7CF78F417}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{159A32AB-B2B4-4197-AF04-75B7CF78F417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49CAE9BF-47C5-4A9D-8945-365275C1D851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49CAE9BF-47C5-4A9D-8945-365275C1D851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49CAE9BF-47C5-4A9D-8945-365275C1D851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49CAE9BF-47C5-4A9D-8945-365275C1D851}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

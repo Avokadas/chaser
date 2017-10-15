@@ -6,11 +6,13 @@ namespace Chaser.Game
 {
     public class Bullet : GameObject, ISmart
     {
+        private readonly IBulletMovementStrategy _strategy;
         private readonly Clock _timer = new Clock();
         public Directions Direction { get; }
 
-        public Bullet(Directions direction)
+        public Bullet(Directions direction, IBulletMovementStrategy strategy)
         {
+            _strategy = strategy;
             X = GameStateSingleton.Instance.State.Chaser.X;
             Y = GameStateSingleton.Instance.State.Chaser.Y;
             Width = 30;
@@ -32,57 +34,11 @@ namespace Chaser.Game
             }
 
             //Return a new move command which is build based on Direction properties
-            var command = CreateMoveCommand();
             return new List<Command>
             {
-                command
+                _strategy.CreateMoveCommand(this)
             };
         }
 
-        private MoveCommand CreateMoveCommand()
-        {
-            int x = 0;
-            int y = 0;
-
-            if (Direction == Directions.Left)
-            {
-                x = -1;
-            }
-            if (Direction == Directions.Right)
-            {
-                x = 1;
-            }
-            if (Direction == Directions.Up)
-            {
-                y = 1;
-            }
-            if (Direction == Directions.Down)
-            {
-                y = -1;
-            }
-            if (Direction == Directions.UpLeft)
-            {
-                x = -1;
-                y = 1;
-            }
-            if (Direction == Directions.UpRight)
-            {
-                x = 1;
-                y = 1;
-            }
-            if (Direction == Directions.DownLeft)
-            {
-                x = -1;
-                y = -1;
-            }
-            if (Direction == Directions.DownRight)
-            {
-                x = 1;
-                y = -1;
-            }
-
-            var command = new MoveCommand(this, x, y);
-            return command;
-        }
     }
 }
