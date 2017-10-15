@@ -75,8 +75,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameLoopEngine.cs" />
+    <Compile Include="Adapters\GameStateMutatorAdapter.cs" />
+    <Compile Include="Adapters\ILoopAdapter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Adapters\RenderingEngineAdapter.cs" />
+    <Compile Include="Adapters\UserInputProcessorAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
