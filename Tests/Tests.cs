@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Runtime.InteropServices;
-using Chaser.Adapters;
+﻿using Chaser.Adapters;
 using Chaser.Game;
 using Chaser.Game.Commands;
 using Chaser.Game.Strategies;
