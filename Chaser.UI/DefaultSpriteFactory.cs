@@ -17,7 +17,7 @@ namespace Chaser.UI
                 sprite.Position = new Vector2f(obj.X, obj.Y);
                 return sprite;
             }
-            if (obj is WallPrototype)
+            if (obj is Wall)
             {
                 var sprite = new Sprite(new Texture("Assets/Wall.jpg"),
                     new IntRect(obj.Xpic, obj.Ypic, obj.Width, obj.Height));

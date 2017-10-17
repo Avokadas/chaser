@@ -7,8 +7,9 @@
         {
         }
 
-        public Wall()
+        public Wall Clone()
         {
+            return (Wall)MemberwiseClone();
         }
     }
 }

@@ -1,6 +1,12 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Linq;
+using System.Runtime.InteropServices;
+using Chaser.Adapters;
 using Chaser.Game;
+using Chaser.Game.Commands;
+using Chaser.Game.Strategies;
+using Chaser.Game.TerrainObjects;
 using Chaser.UI;
+using Moq;
 using NUnit.Framework;
 
 namespace Chaser.Tests
@@ -21,7 +27,7 @@ namespace Chaser.Tests
         }
 
         [Test]
-        public void AbstractFactory()
+        public void AbstractFactoryPattern()
         {
             var factory = new DefaultSpriteFactory();
 
@@ -35,6 +41,74 @@ namespace Chaser.Tests
         }
 
         [Test]
-        public void 
+        public void StrategyPattern()
+        {
+            GameStateSingleton.Instance.State.Player.X = 100;
+            GameStateSingleton.Instance.State.Player.Y = 100;    
+            
+            var bullet = new Bullet(Directions.Left, new NullTravelBulletStrategy());
+            GameStateSingleton.Instance.State.Bullets.Add(bullet);
+
+            IBulletMovementStrategy homingMoveStrategy = new HomingBuletStrategy();
+            IBulletMovementStrategy straightMoveStrategy = new StraightTravelBulletStrategy();
+
+            var straightMoveCommand = straightMoveStrategy.CreateMoveCommand(bullet);
+            var homingMoveCommand = homingMoveStrategy.CreateMoveCommand(bullet);
+
+            Assert.That(() => (straightMoveCommand.XDiff != homingMoveCommand.XDiff || straightMoveCommand.YDiff != homingMoveCommand.YDiff));
+        }
+
+        [Test]
+        public void BuilderPattern()
+        {
+            var defaultGameState = new GameState();
+            var builder = new GameStateBuilder();
+            builder.AddPlayer();
+            builder.AddGameMap();
+            var gameState = builder.GetGameState();
+
+            Assert.That(defaultGameState, Does.Not.EqualTo(gameState));
+            Assert.That(defaultGameState.Map, Is.Null);
+            Assert.That(gameState.Map, Is.Not.Null);
+        }
+
+        [Test]
+        public void AdapterPattern()
+        {
+            var renderingEngineMock = new Mock<RenderingEngine>();
+            renderingEngineMock.Setup(x => x.RenderGameState());
+            ILoopAdapter adapter = new RenderingEngineAdapter(renderingEngineMock.Object);
+
+            var gameLoopEngine = new GameLoopEngine();
+            gameLoopEngine.RegisterComponent(adapter);
+            gameLoopEngine.Loop();
+
+            renderingEngineMock.Verify(x => x.RenderGameState(), Times.Once);
+        }
+
+        [Test]
+        public void PrototypePattern()
+        {
+            var wall = new Wall(0,0,0,0,10,10);
+            var clonedWall = wall.Clone();
+
+            //Id is a generated Guid property inside very GameObject
+            Assert.That(clonedWall.Id, Is.EqualTo(wall.Id));
+        }
+
+        [Test]
+        public void CommandPattern()
+        {
+            var player = new Player();
+            var xBefore = player.X;
+            var yBefore = player.Y;
+            Command command = new MoveCommand(player, 10, 15);
+
+            command.Execute();
+
+            //Id is a generated Guid property inside very GameObject
+            Assert.That(player.X, Is.Not.EqualTo(xBefore));
+            Assert.That(player.Y, Is.Not.EqualTo(yBefore));
+        }
     }
 }

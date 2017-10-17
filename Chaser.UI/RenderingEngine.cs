@@ -16,6 +16,10 @@ namespace Chaser.UI
         private List<Sprite> _bullets = new List<Sprite>();
         private ISpriteFactory _spriteFactory;
 
+        public RenderingEngine()
+        {
+        }
+
         public RenderingEngine(RenderWindow window, ISpriteFactory spriteFactory)
         {
             _spriteFactory = spriteFactory;
@@ -30,7 +34,7 @@ namespace Chaser.UI
             }
         }
 
-        public void RenderGameState()
+        public virtual void RenderGameState()
         {
             //Next 2 lines might be shit performance
             _bullets.Clear();

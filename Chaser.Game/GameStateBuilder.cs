@@ -27,9 +27,9 @@ namespace Chaser.Game
 
         public void AddGameMap()
         {
-            var longWallPrototype = new WallPrototype(0, 0, 0, 0, 500, 100);
-            var tallWallPrototype = new WallPrototype(0, 0, 0, 0, 100, 500);
-            var squareWallPrototype = new WallPrototype(0, 0, 0, 0, 100, 100);
+            var longWallPrototype = new Wall(0, 0, 0, 0, 500, 100);
+            var tallWallPrototype = new Wall(0, 0, 0, 0, 100, 500);
+            var squareWallPrototype = new Wall(0, 0, 0, 0, 100, 100);
 
             const int numberOfWalls = 5;
             var random = new Random();
@@ -38,7 +38,7 @@ namespace Chaser.Game
 
             for (var i = 0; i < numberOfWalls; i++)
             {
-                WallPrototype wall;
+                Wall wall;
                 switch (random.Next(1, 4))
                 {
                     case 1:
