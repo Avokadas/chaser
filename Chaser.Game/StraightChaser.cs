@@ -6,11 +6,11 @@ namespace Chaser.Game
     {
         protected override MoveCommand GenerateMoveCommand()
         {
-            var playerX = GameStateSingleton.Instance.State.Player.X;
-            var playerY = GameStateSingleton.Instance.State.Player.Y;
+            var playerX = GameStateSingleton.Instance.State.Player.State.X;
+            var playerY = GameStateSingleton.Instance.State.Player.State.Y;
 
-            var x = GameStateSingleton.Instance.State.Chaser.X;
-            var y = GameStateSingleton.Instance.State.Chaser.Y;
+            var x = GameStateSingleton.Instance.State.Chaser.State.X;
+            var y = GameStateSingleton.Instance.State.Chaser.State.Y;
 
             int deltaX = 0, deltaY = 0;
 

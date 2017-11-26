@@ -64,6 +64,7 @@
     <Compile Include="Directions.cs" />
     <Compile Include="GameFacade.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="GameObjectState.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="GameStateBuilder.cs" />
     <Compile Include="GameStateSingleton.cs" />

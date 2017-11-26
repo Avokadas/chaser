@@ -4,11 +4,11 @@
     {
         public Player()
         {
-            X = 100;
-            Y = 100;
-            Width = 100;
-            Height = 100;
-            IsCollidable = true;
+            State.X = 100;
+            State.Y = 100;
+            State.Width = 100;
+            State.Height = 100;
+            State.IsCollidable = true;
         }
     }
 }

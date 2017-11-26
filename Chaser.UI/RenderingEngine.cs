@@ -4,6 +4,7 @@ using Chaser.Game;
 using SFML.Graphics;
 using SFML.System;
 using System;
+using Chaser.Game.Strategies;
 
 namespace Chaser.UI
 {
@@ -13,7 +14,7 @@ namespace Chaser.UI
         private static Sprite _playerSprite;
         private static Sprite _chaserSprite;
         private List<Sprite> _terrainObjects = new List<Sprite>();
-        private List<Sprite> _bullets = new List<Sprite>();
+        private List<GameObjectState> _bulletStates = new List<GameObjectState>();
         private ISpriteFactory _spriteFactory;
 
         public RenderingEngine()
@@ -37,26 +38,17 @@ namespace Chaser.UI
         public virtual void RenderGameState()
         {
             //Next 2 lines might be shit performance
-            _bullets.Clear();
-            GameStateSingleton.Instance.State.Bullets.ForEach(x => _bullets.Add(_spriteFactory.CreateSprite(x)));
-
-            foreach (var sprite in _bullets)
-            {
-                var spriteIndex = _bullets.IndexOf(sprite);
-
-                sprite.Position = new Vector2f(
-                    GameStateSingleton.Instance.State.Bullets[spriteIndex].X,
-                    GameStateSingleton.Instance.State.Bullets[spriteIndex].Y
-                );
-            }
+            _bulletStates.Clear();
+            GameStateSingleton.Instance.State.Bullets.ForEach(x => _bulletStates.Add(x.State));
+            
             Window.DispatchEvents();
             Window.Clear();
 
             if (GameStateSingleton.Instance.State.Player != null)
             {
                 _playerSprite.Position = new Vector2f(
-                    GameStateSingleton.Instance.State.Player.X,
-                    GameStateSingleton.Instance.State.Player.Y);
+                    GameStateSingleton.Instance.State.Player.State.X,
+                    GameStateSingleton.Instance.State.Player.State.Y);
 
                 _playerSprite.Draw(Window, RenderStates.Default);
             }
@@ -64,8 +56,8 @@ namespace Chaser.UI
             if (GameStateSingleton.Instance.State.Chaser != null)
             {
                 _chaserSprite.Position = new Vector2f(
-                    GameStateSingleton.Instance.State.Chaser.X,
-                    GameStateSingleton.Instance.State.Chaser.Y);
+                    GameStateSingleton.Instance.State.Chaser.State.X,
+                    GameStateSingleton.Instance.State.Chaser.State.Y);
 
                 _chaserSprite.Draw(Window, RenderStates.Default);
             }
@@ -78,9 +70,10 @@ namespace Chaser.UI
                 }
             }
 
-            foreach (var sprite in _bullets)
+            var bulletSprite = _spriteFactory.CreateSprite(new Bullet(Directions.Down, new HomingBuletStrategy()));
+            foreach (var state in _bulletStates)
             {
-                sprite.Draw(Window, RenderStates.Default);
+                bulletSprite.Draw(Window, state);
             }
             Window.Display();
         }

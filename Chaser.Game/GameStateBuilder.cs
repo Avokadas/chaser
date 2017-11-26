@@ -22,17 +22,17 @@ namespace Chaser.Game
 
             if (randValue == 1)
             {
-                _gameState.Chaser = new StraightChaser {X = 100, Y = 200, Width = 100, Height = 100};
+                _gameState.Chaser = new StraightChaser {State = {X = 100, Y = 200, Width = 100, Height = 100}};
             }
             else
             {
-                _gameState.Chaser = new ParkinsonsChaser { X = 100, Y = 200, Width = 100, Height = 100 };
+                _gameState.Chaser = new ParkinsonsChaser {State = {X = 100, Y = 200, Width = 100, Height = 100}};
             }
         }
 
         public void AddPlayer()
         {
-            _gameState.Player = new Player{ X = 100, Y = 100, Width = 100, Height = 100 };
+            _gameState.Player = new Player {State = {X = 100, Y = 100, Width = 100, Height = 100}};
         }
 
         public void AddGameMap()
@@ -64,8 +64,8 @@ namespace Chaser.Game
                         wall = squareWallPrototype.Clone();
                         break;
                 }
-                wall.X = random.Next(0, 1000);
-                wall.Y = random.Next(0, 1000);
+                wall.State.X = random.Next(0, 1000);
+                wall.State.Y = random.Next(0, 1000);
 
                 walls.Add(wall);
             }

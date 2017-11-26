@@ -41,8 +41,8 @@ namespace Chaser.Tests
         [Test]
         public void StrategyPattern()
         {
-            GameStateSingleton.Instance.State.Player.X = 100;
-            GameStateSingleton.Instance.State.Player.Y = 100;    
+            GameStateSingleton.Instance.State.Player.State.X = 100;
+            GameStateSingleton.Instance.State.Player.State.Y = 100;    
             
             var bullet = new Bullet(Directions.Left, new NullTravelBulletStrategy());
             GameStateSingleton.Instance.State.Bullets.Add(bullet);
@@ -90,7 +90,7 @@ namespace Chaser.Tests
             var wall = new Wall(0,0,0,0,10,10);
             var clonedWall = wall.Clone();
 
-            //Id is a generated Guid property inside very GameObject
+            //Id is a generated Guid property inside every GameObject
             Assert.That(clonedWall.Id, Is.EqualTo(wall.Id));
         }
 
@@ -98,15 +98,15 @@ namespace Chaser.Tests
         public void CommandPattern()
         {
             var player = new Player();
-            var xBefore = player.X;
-            var yBefore = player.Y;
+            var xBefore = player.State.X;
+            var yBefore = player.State.Y;
             Command command = new MoveCommand(player, 10, 15);
 
             command.Execute();
 
-            //Id is a generated Guid property inside very GameObject
-            Assert.That(player.X, Is.Not.EqualTo(xBefore));
-            Assert.That(player.Y, Is.Not.EqualTo(yBefore));
+            //Id is a generated Guid property inside every GameObject
+            Assert.That(player.State.X, Is.Not.EqualTo(xBefore));
+            Assert.That(player.State.Y, Is.Not.EqualTo(yBefore));
         }
     }
 }

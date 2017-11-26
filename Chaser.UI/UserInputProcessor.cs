@@ -31,19 +31,19 @@ namespace Chaser.UI
             }
             if (_userInputConfiguration.Up)
             {
-                GameStateSingleton.Instance.State.Player.Y -= 1;
+                GameStateSingleton.Instance.State.Player.State.Y -= 1;
             }
             if (_userInputConfiguration.Down)
             {
-                GameStateSingleton.Instance.State.Player.Y += 1;
+                GameStateSingleton.Instance.State.Player.State.Y += 1;
             }
             if (_userInputConfiguration.Left)
             {
-                GameStateSingleton.Instance.State.Player.X -= 1;
+                GameStateSingleton.Instance.State.Player.State.X -= 1;
             }
             if (_userInputConfiguration.Right)
             {
-                GameStateSingleton.Instance.State.Player.X += 1;
+                GameStateSingleton.Instance.State.Player.State.X += 1;
             }
         }
     }

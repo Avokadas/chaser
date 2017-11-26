@@ -7,11 +7,11 @@ namespace Chaser.Game.Strategies
     {
         public MoveCommand CreateMoveCommand(Bullet bullet)
         {
-            var playerX = GameStateSingleton.Instance.State.Player.X;
-            var playerY = GameStateSingleton.Instance.State.Player.Y;
+            var playerX = GameStateSingleton.Instance.State.Player.State.X;
+            var playerY = GameStateSingleton.Instance.State.Player.State.Y;
 
-            var x = GameStateSingleton.Instance.State.Bullets.Single(b => b.Id == bullet.Id).X;
-            var y = GameStateSingleton.Instance.State.Bullets.Single(b => b.Id == bullet.Id).Y;
+            var x = GameStateSingleton.Instance.State.Bullets.Single(b => b.Id == bullet.Id).State.X;
+            var y = GameStateSingleton.Instance.State.Bullets.Single(b => b.Id == bullet.Id).State.Y;
 
             int deltaX = 0, deltaY = 0;
 

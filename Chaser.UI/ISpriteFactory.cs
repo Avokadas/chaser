@@ -3,12 +3,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chaser.Game;
+using Chaser.UI.Sprites;
 using SFML.Graphics;
 
 namespace Chaser.UI
 {
     public interface ISpriteFactory
     {
-        Sprite CreateSprite(GameObject obj);
+        SpriteFlyweight CreateSprite(GameObject obj);
     }
 }

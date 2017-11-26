@@ -11,10 +11,10 @@ namespace Chaser.Game
 
         protected Chaser()
         {
-            X = 500;
-            Y = 400;
-            Width = 100;
-            Height = 100;
+            State.X = 500;
+            State.Y = 400;
+            State.Width = 100;
+            State.Height = 100;
             _timer.Restart();
         }
 

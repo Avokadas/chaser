@@ -14,12 +14,12 @@ namespace Chaser.Game
         public Bullet(Directions direction, IBulletMovementStrategy strategy)
         {
             _strategy = strategy;
-            X = GameStateSingleton.Instance.State.Chaser.X;
-            Y = GameStateSingleton.Instance.State.Chaser.Y;
-            Width = 30;
-            Height = 30;
+            State.X = GameStateSingleton.Instance.State.Chaser.State.X;
+            State.Y = GameStateSingleton.Instance.State.Chaser.State.Y;
+            State.Width = 30;
+            State.Height = 30;
             Direction = direction;
-            IsCollidable = true;
+            State.IsCollidable = true;
         }
 
         public List<Command> ReturnNextMove()

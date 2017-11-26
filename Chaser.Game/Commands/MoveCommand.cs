@@ -15,8 +15,8 @@ namespace Chaser.Game.Commands
 
         public override void Execute()
         {
-            _gameObject.X += XDiff;
-            _gameObject.Y += YDiff;
+            _gameObject.State.X += XDiff;
+            _gameObject.State.Y += YDiff;
         }
     }
 }
