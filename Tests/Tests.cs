@@ -30,7 +30,7 @@ namespace Chaser.Tests
             var factory = new DefaultSpriteFactory();
 
             var bullet = new Bullet(default(Directions), null);
-            var chaser = new Game.Chaser();
+            var chaser = new StraightChaser();
 
             var bulletSprite = factory.CreateSprite(bullet);
             var chaserSprite = factory.CreateSprite(chaser);

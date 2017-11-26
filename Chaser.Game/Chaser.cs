@@ -5,11 +5,11 @@ using System;
 
 namespace Chaser.Game
 {
-    public class Chaser : GameObject, ISmart
+    public abstract class Chaser : GameObject, ISmart
     {
         private readonly Clock _timer = new Clock();
 
-        public Chaser()
+        protected Chaser()
         {
             X = 500;
             Y = 400;
@@ -34,41 +34,6 @@ namespace Chaser.Game
             return commands;
         }
 
-        private MoveCommand GenerateMoveCommand()
-        {
-            var playerX = GameStateSingleton.Instance.State.Player.X;
-            var playerY = GameStateSingleton.Instance.State.Player.Y;
-
-            var x = GameStateSingleton.Instance.State.Chaser.X;
-            var y = GameStateSingleton.Instance.State.Chaser.Y;
-
-            int deltaX = 0, deltaY = 0;
-
-            var distance = 200;
-
-            if (x - playerX > distance || y - playerY > distance
-                || playerX - x > distance || playerY - y > distance)
-            {
-                if (playerX > x)
-                {
-                    deltaX = 1;
-                }
-                if (playerX < x)
-                {
-                    deltaX = -1;
-                }
-                if (playerY > y)
-                {
-                    deltaY = 1;
-                }
-                if (playerY < y)
-                {
-                    deltaY = -1;
-                }
-            }
-
-            var command = new MoveCommand(this, deltaX, deltaY);
-            return command;
-        }
+        protected abstract MoveCommand GenerateMoveCommand();
     }
 }

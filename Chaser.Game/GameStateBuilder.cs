@@ -17,7 +17,17 @@ namespace Chaser.Game
 
         public void AddChaser()
         {
-           _gameState.Chaser = new Chaser { X = 100, Y = 200, Width = 100, Height = 100 };
+            var random = new Random();
+            var randValue = random.Next(0, 2);
+
+            if (randValue == 1)
+            {
+                _gameState.Chaser = new StraightChaser {X = 100, Y = 200, Width = 100, Height = 100};
+            }
+            else
+            {
+                _gameState.Chaser = new ParkinsonsChaser { X = 100, Y = 200, Width = 100, Height = 100 };
+            }
         }
 
         public void AddPlayer()

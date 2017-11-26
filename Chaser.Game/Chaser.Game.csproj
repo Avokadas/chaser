@@ -67,6 +67,8 @@
     <Compile Include="GameState.cs" />
     <Compile Include="GameStateBuilder.cs" />
     <Compile Include="GameStateSingleton.cs" />
+    <Compile Include="ParkinsonsChaser.cs" />
+    <Compile Include="StraightChaser.cs" />
     <Compile Include="Strategies\HomingBuletStrategy.cs" />
     <Compile Include="Strategies\IBulletMovementStrategy.cs" />
     <Compile Include="IGameStateBuilder.cs" />
