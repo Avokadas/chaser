@@ -18,10 +18,12 @@ namespace Chaser.Game.Commands
             var random = new Random();
             if (random.Next(0, 4) == 0)
             {
-                GameStateSingleton.Instance.State.Bullets.Add(new Bullet(Direction, new HomingBuletStrategy()));
+                
+                
+                GameStateSingleton.Instance.State.Bullets.Add(new BulletProxy(new Bullet(Direction, new HomingBuletStrategy())));
             }
 
-            GameStateSingleton.Instance.State.Bullets.Add(new Bullet(Direction, new StraightTravelBulletStrategy()));
+            GameStateSingleton.Instance.State.Bullets.Add(new BulletProxy(new Bullet(Direction, new StraightTravelBulletStrategy())));
         }
     }
 }

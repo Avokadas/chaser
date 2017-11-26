@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Runtime.InteropServices;
 using Chaser.Game.TerrainObjects;
 
 namespace Chaser.Game
@@ -33,6 +31,11 @@ namespace Chaser.Game
         public void AddPlayer()
         {
             _gameState.Player = new Player {State = {X = 100, Y = 100, Width = 100, Height = 100}};
+        }
+
+        public void InitScore()
+        {
+            _gameState.Score = 0;
         }
 
         public void AddGameMap()

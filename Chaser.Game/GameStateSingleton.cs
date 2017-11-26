@@ -1,6 +1,4 @@
-﻿using System.Data.SqlClient;
-
-namespace Chaser.Game
+﻿namespace Chaser.Game
 {
     public class GameStateSingleton
     {
@@ -10,6 +8,7 @@ namespace Chaser.Game
         {
             IGameStateBuilder builder = new GameStateBuilder();
             builder.AddChaser();
+            builder.InitScore();
             builder.AddPlayer();
             builder.AddGameMap();
             builder.SetStartGameState();

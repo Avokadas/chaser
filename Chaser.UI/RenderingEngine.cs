@@ -16,6 +16,7 @@ namespace Chaser.UI
         private List<Sprite> _terrainObjects = new List<Sprite>();
         private List<GameObjectState> _bulletStates = new List<GameObjectState>();
         private ISpriteFactory _spriteFactory;
+        private Text score;
 
         public RenderingEngine()
         {
@@ -75,6 +76,23 @@ namespace Chaser.UI
             {
                 bulletSprite.Draw(Window, state);
             }
+
+            if (score == null)
+            {
+                var font = new Font("Assets/arial.ttf");
+                score = new Text
+                {
+                    Font = font,
+                    FillColor = Color.Cyan,
+                    Style = Text.Styles.Bold,
+                    CharacterSize = 25
+                };
+
+            }
+
+            score.DisplayedString = "SCORE: " + GameStateSingleton.Instance.State.Score;
+            score.Draw(Window, RenderStates.Default);
+
             Window.Display();
         }
     }

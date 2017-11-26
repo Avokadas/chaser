@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Collections.Generic;
-using System.Dynamic;
+﻿using System.Collections.Generic;
 using Chaser.Game.Commands;
 
 namespace Chaser.Game
@@ -8,10 +6,11 @@ namespace Chaser.Game
     public class GameState
     {
         public bool GameRunning { get; set; }
+        public int Score { get; set; }
         public Player Player { get; set; }
         public GameMap Map { get; set; }
         public Chaser Chaser { get; set; }
-        public List<Bullet> Bullets { get; set; } = new List<Bullet>();
+        public List<IBullet> Bullets { get; set; } = new List<IBullet>();
 
         public void MutateGameState()
         {

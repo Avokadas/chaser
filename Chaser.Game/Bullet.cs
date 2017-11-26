@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Chaser.Game.Commands;
 using Chaser.Game.Strategies;
 using SFML.System;
 
 namespace Chaser.Game
 {
-    public class Bullet : GameObject, ISmart
+    public class Bullet : GameObject, IBullet
     {
         private readonly IBulletMovementStrategy _strategy;
         private readonly Clock _timer = new Clock();
@@ -24,7 +25,6 @@ namespace Chaser.Game
 
         public List<Command> ReturnNextMove()
         {
-
             if (_timer.ElapsedTime.AsSeconds() > 5)
             {
                 _timer.Restart();
@@ -34,11 +34,17 @@ namespace Chaser.Game
                 };
             }
 
-            //Return a new move command which is build based on Direction properties
-            return new List<Command>
+            var nextCommand = _strategy.CreateMoveCommand(this);
+
+            if (nextCommand != null)
             {
-                _strategy.CreateMoveCommand(this)
-            };
+                return new List<Command>
+                {
+                    _strategy.CreateMoveCommand(this)
+                };
+            }
+            //Return a new move command which is build based on Direction properties
+            return new List<Command>();
         }
 
     }

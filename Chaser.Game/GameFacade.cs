@@ -17,7 +17,7 @@ namespace Chaser.Game
         {
             GameStateSingleton.Instance.State.Chaser = null;
             GameStateSingleton.Instance.State.Player = null;
-            GameStateSingleton.Instance.State.Bullets = new List<Bullet>();
+            GameStateSingleton.Instance.State.Bullets = new List<IBullet>();
             GameStateSingleton.Instance.State.Map.TerrainObjects = new List<GameObject>();
         }
     }

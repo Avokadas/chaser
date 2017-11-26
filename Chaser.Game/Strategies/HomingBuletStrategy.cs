@@ -10,8 +10,8 @@ namespace Chaser.Game.Strategies
             var playerX = GameStateSingleton.Instance.State.Player.State.X;
             var playerY = GameStateSingleton.Instance.State.Player.State.Y;
 
-            var x = GameStateSingleton.Instance.State.Bullets.Single(b => b.Id == bullet.Id).State.X;
-            var y = GameStateSingleton.Instance.State.Bullets.Single(b => b.Id == bullet.Id).State.Y;
+            var x = bullet.State.X;
+            var y = bullet.State.Y;
 
             int deltaX = 0, deltaY = 0;
 
