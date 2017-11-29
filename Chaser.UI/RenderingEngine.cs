@@ -65,9 +65,11 @@ namespace Chaser.UI
 
             if (GameStateSingleton.Instance.State.Map.TerrainObjects.Count() != 0)
             {
-                foreach (var sprite in _terrainObjects)
+                for(int i = 0; i < _terrainObjects.Count; i++)
                 {
-                    sprite.Draw(Window, RenderStates.Default);
+                    var obj = GameStateSingleton.Instance.State.Map.TerrainObjects[i];
+                    _terrainObjects[i].Position = new Vector2f(obj.State.X, obj.State.Y);
+                    _terrainObjects[i].Draw(Window, RenderStates.Default);
                 }
             }
 
