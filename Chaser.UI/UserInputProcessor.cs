@@ -19,6 +19,8 @@ namespace Chaser.UI
 
         public void Process()
         {
+            var player = GameStateSingleton.Instance.State.Player;
+            
             if (_userInputConfiguration.Close)
             {
                 _window.Close();
@@ -29,21 +31,41 @@ namespace Chaser.UI
                 GameStateSingleton.Instance.State.GameRunning = false;
                 facade.RemoveAll();
             }
-            if (_userInputConfiguration.Up)
+
+            if (_userInputConfiguration.Up && player.WillNotCollide(0, -1))
             {
-                GameStateSingleton.Instance.State.Player.State.Y -= 1;
+                player.State.Y -= player.State.Velocity;
             }
-            if (_userInputConfiguration.Down)
-            {
-                GameStateSingleton.Instance.State.Player.State.Y += 1;
+            else
+            { 
+                player.State.Y += player.State.Velocity;
             }
-            if (_userInputConfiguration.Left)
+
+            if (_userInputConfiguration.Down && player.WillNotCollide(0, 1))
             {
-                GameStateSingleton.Instance.State.Player.State.X -= 1;
+                player.State.Y += player.State.Velocity;
             }
-            if (_userInputConfiguration.Right)
+            else
             {
-                GameStateSingleton.Instance.State.Player.State.X += 1;
+                player.State.Y -= player.State.Velocity;
+            }
+
+            if (_userInputConfiguration.Left && player.WillNotCollide(-1, 0))
+            {
+                player.State.X -= player.State.Velocity;
+            }
+            else
+            {
+                player.State.X += player.State.Velocity;
+            }
+
+            if (_userInputConfiguration.Right && player.WillNotCollide(1, 0))
+            {
+                player.State.X += player.State.Velocity;
+            }
+            else
+            {
+                player.State.X -= player.State.Velocity;
             }
         }
     }

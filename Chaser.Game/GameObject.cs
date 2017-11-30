@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Chaser.Game
 {
@@ -26,5 +27,16 @@ namespace Chaser.Game
 
         public Guid Id { get; }
         public GameObjectState State { get; set; } = new GameObjectState();
+
+        public bool WillNotCollide(int x, int y)
+        {
+            return
+            GameStateSingleton.Instance.State.Map.TerrainObjects.All(terrainObject =>  
+                (State.X + x > terrainObject.State.X + terrainObject.State.Width
+                || State.X + x + State.Width < terrainObject.State.X
+                || State.Y + y > terrainObject.State.Y + terrainObject.State.Height
+                || State.Y + y + State.Height < terrainObject.State.Y)
+            );
+        }
     }
 }

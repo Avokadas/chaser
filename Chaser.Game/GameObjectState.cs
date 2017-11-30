@@ -9,5 +9,6 @@
         public int Width { get; set; }
         public int Height { get; set; }
         public bool IsCollidable { get; set; }
+        public int Velocity { get; set; } = 1;
     }
 }
