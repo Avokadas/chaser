@@ -29,10 +29,10 @@ namespace Chaser.UI
 
             _chaserSprite = _spriteFactory.CreateSprite(GameStateSingleton.Instance.State.Chaser);
             _playerSprite = _spriteFactory.CreateSprite(GameStateSingleton.Instance.State.Player);
-
-            foreach (var gameObject in GameStateSingleton.Instance.State.Map.TerrainObjects)
+            
+            for (var i = 0; i < GameStateSingleton.Instance.State.Map.TerrainObjects.Count; i++)
             {
-                _terrainObjects.Add(_spriteFactory.CreateSprite(gameObject));
+                _terrainObjects.Add(_spriteFactory.CreateSprite((GameObject)GameStateSingleton.Instance.State.Map.TerrainObjects[i]));
             }
         }
 
@@ -63,11 +63,11 @@ namespace Chaser.UI
                 _chaserSprite.Draw(Window, RenderStates.Default);
             }
 
-            if (GameStateSingleton.Instance.State.Map.TerrainObjects.Count() != 0)
+            if (GameStateSingleton.Instance.State.Map.TerrainObjects.Count != 0)
             {
                 for(int i = 0; i < _terrainObjects.Count; i++)
                 {
-                    var obj = GameStateSingleton.Instance.State.Map.TerrainObjects[i];
+                    GameObject obj = (GameObject)GameStateSingleton.Instance.State.Map.TerrainObjects[i];
                     _terrainObjects[i].Position = new Vector2f(obj.State.X, obj.State.Y);
                     _terrainObjects[i].Draw(Window, RenderStates.Default);
                 }

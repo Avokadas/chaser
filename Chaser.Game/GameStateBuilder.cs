@@ -44,10 +44,12 @@ namespace Chaser.Game
             var tallWallPrototype = new Wall(0, 0, 0, 0, 100, 500);
             var squareWallPrototype = new Wall(0, 0, 0, 0, 100, 100);
 
-            const int numberOfWalls = 3;
+            const int numberOfWalls = 2;
             var random = new Random();
 
-            var walls = new List<GameObject>();
+            TerrainObjectCollection walls = new TerrainObjectCollection();
+
+            //var walls = new List<GameObject>();
 
             for (var i = 0; i < numberOfWalls; i++)
             {
@@ -67,10 +69,14 @@ namespace Chaser.Game
                         wall = squareWallPrototype.Clone();
                         break;
                 }
-                wall.State.X = random.Next(0, 500);
-                wall.State.Y = random.Next(0, 500);
+                
+                wall.State.X = random.Next(200, 500);
+                wall.State.Y = random.Next(200, 500);
+                /*
+                wall.State.X = 300;
+                wall.State.Y = 200;*/
 
-                walls.Add(wall);
+                walls[i] = wall;
             }
 
             _gameState.Map = new GameMap
@@ -92,6 +98,6 @@ namespace Chaser.Game
 
     public class GameMap
     {
-        public IList<GameObject> TerrainObjects { get; set; }
+        public TerrainObjectCollection TerrainObjects { get; set; }
     }
 }
