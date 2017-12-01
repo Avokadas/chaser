@@ -30,13 +30,14 @@ namespace Chaser.Game
 
         public bool WillNotCollide(int x, int y)
         {
-            var trueCount = 0;
-            for (int i = 0; i < GameStateSingleton.Instance.State.Map.TerrainObjects.Count; i++) {
-                GameObject temp = (GameObject)GameStateSingleton.Instance.State.Map.TerrainObjects[i];
-                if (State.X + x > temp.State.X + temp.State.Width
-                || State.X + x + State.Width < temp.State.X
-                || State.Y + y > temp.State.Y + temp.State.Height
-                || State.Y + y + State.Height < temp.State.Y) {
+            var trueCount = 1;
+            var iterator = GameStateSingleton.Instance.State.Map.TerrainObjects.CreateIterator();
+            for (var item = iterator.CurrentItem; iterator.Next() != null; iterator.Next())
+            {
+                if (State.X + x > item.State.X + item.State.Width
+                || State.X + x + State.Width < item.State.X
+                || State.Y + y > item.State.Y + item.State.Height
+                || State.Y + y + State.Height < item.State.Y) {
                     trueCount++;
                 }
             }

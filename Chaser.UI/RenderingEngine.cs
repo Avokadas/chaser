@@ -29,10 +29,11 @@ namespace Chaser.UI
 
             _chaserSprite = _spriteFactory.CreateSprite(GameStateSingleton.Instance.State.Chaser);
             _playerSprite = _spriteFactory.CreateSprite(GameStateSingleton.Instance.State.Player);
-            
-            for (var i = 0; i < GameStateSingleton.Instance.State.Map.TerrainObjects.Count; i++)
+
+            var iterator = GameStateSingleton.Instance.State.Map.TerrainObjects.CreateIterator();
+            for (var item = iterator.CurrentItem; iterator.Next() != null; iterator.Next())
             {
-                _terrainObjects.Add(_spriteFactory.CreateSprite((GameObject)GameStateSingleton.Instance.State.Map.TerrainObjects[i]));
+                _terrainObjects.Add(_spriteFactory.CreateSprite(item));
             }
         }
 
