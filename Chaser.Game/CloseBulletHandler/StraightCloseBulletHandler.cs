@@ -10,7 +10,9 @@ namespace Chaser.Game
         {
             if (strategy is StraightTravelBulletStrategy)
             {
+                var stunner = new Stunner();
                 GameStateSingleton.Instance.State.Player.State.Health -= 5;
+                GameStateSingleton.Instance.State.Player.Accept(stunner);
             }
             else
             {

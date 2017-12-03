@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
+using SFML.System;
 
 namespace Chaser.Game
 {
@@ -27,6 +29,7 @@ namespace Chaser.Game
 
         public Guid Id { get; }
         public GameObjectState State { get; set; } = new GameObjectState();
+        public Timer Timer;
 
         public bool WillNotCollide(int x, int y)
         {
@@ -43,6 +46,11 @@ namespace Chaser.Game
             }
 
             return trueCount == GameStateSingleton.Instance.State.Map.TerrainObjects.Count;
+        }
+
+        public void Accept(GameObjectVisitor visitor)
+        {
+            visitor.VisitGameObject(this);
         }
     }
 }

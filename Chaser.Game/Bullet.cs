@@ -45,7 +45,7 @@ namespace Chaser.Game
                 if (Math.Abs(State.X - GameStateSingleton.Instance.State.Player.State.X) < 10 &&
                     Math.Abs(State.Y - GameStateSingleton.Instance.State.Player.State.Y) < 10)
                 {
-                    closeBulletHandler.HandleBullet(_strategy);
+                    closeBulletHandler.HandleBullet(Strategy);
                     return new List<Command>
                     {
                         new BulletDisintegrateCommand(Id)

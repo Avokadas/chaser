@@ -90,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategies\NullTravelBulletStrategy.cs" />
     <Compile Include="Strategies\StraightTravelBulletStrategy.cs" />
+    <Compile Include="Stunner.cs" />
     <Compile Include="TerrainObjects\ITerrainObjectCollection.cs" />
     <Compile Include="TerrainObjects\TerrainObject.cs" />
     <Compile Include="TerrainObjects\TerrainObjectCollection.cs" />

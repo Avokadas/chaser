@@ -48,25 +48,40 @@ namespace Chaser.UI
 
             if (_userInputConfiguration.Up && player.WillNotCollide(0, -1))
             {
-                player.State.Y -= player.State.Velocity;
+                if (!player.State.Stunned)
+                {
+                    player.State.Y -= player.State.Velocity;
+                }
             }
             else
-            { 
-                player.State.Y += player.State.Velocity;
+            {
+                if (!player.State.Stunned)
+                {
+                    player.State.Y += player.State.Velocity;
+                }
             }
 
             if (_userInputConfiguration.Down && player.WillNotCollide(0, 1))
             {
-                player.State.Y += player.State.Velocity;
+                if (!player.State.Stunned)
+                {
+                    player.State.Y += player.State.Velocity;
+                }
             }
             else
             {
-                player.State.Y -= player.State.Velocity;
+                if (!player.State.Stunned)
+                {
+                    player.State.Y -= player.State.Velocity;
+                }
             }
 
             if (_userInputConfiguration.Left && player.WillNotCollide(-1, 0))
             {
-                player.State.X -= player.State.Velocity;
+                if (!player.State.Stunned)
+                {
+                    player.State.X -= player.State.Velocity;
+                }
             }
             else
             {
@@ -75,7 +90,10 @@ namespace Chaser.UI
 
             if (_userInputConfiguration.Right && player.WillNotCollide(1, 0))
             {
-                player.State.X += player.State.Velocity;
+                if (!player.State.Stunned)
+                {
+                    player.State.X += player.State.Velocity;
+                }
             }
             else
             {
