@@ -17,6 +17,9 @@ namespace Chaser.UI
         private List<GameObjectState> _bulletStates = new List<GameObjectState>();
         private readonly ISpriteFactory _spriteFactory;
         private Text score;
+        private string ScoreText;
+        private Text scoreTextText;
+        private Interpreter interpreter = new Interpreter();
 
         public RenderingEngine()
         {
@@ -90,11 +93,21 @@ namespace Chaser.UI
                     Style = Text.Styles.Bold,
                     CharacterSize = 25
                 };
-
+                scoreTextText = new Text
+                {
+                    Font = font,
+                    FillColor = Color.Cyan,
+                    CharacterSize = 20
+                };
             }
 
+            ScoreText = interpreter.InterpretNumber(GameStateSingleton.Instance.State.Score);
             score.DisplayedString = "SCORE: " + GameStateSingleton.Instance.State.Score;
+            scoreTextText.DisplayedString = ScoreText;
             score.Draw(Window, RenderStates.Default);
+
+            scoreTextText.Position = new Vector2f(0, 20);
+            scoreTextText.Draw(Window, RenderStates.Default);
 
             Window.Display();
         }

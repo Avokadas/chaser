@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\BulletSprite.cs" />
+    <Compile Include="Sprites\SpriteFlyweight.cs" />
     <Compile Include="UserInputProcessor.cs" />
     <Compile Include="DefaultSpriteFactory.cs" />
     <Compile Include="ISpriteFactory.cs" />
