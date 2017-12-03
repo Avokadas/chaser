@@ -62,6 +62,7 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="BulletProxy.cs" />
     <Compile Include="Chaser.cs" />
+    <Compile Include="CloseBulletHandler\CloseBulletHandler.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\MoveCommand.cs" />
     <Compile Include="Commands\NullCommand.cs" />
@@ -74,11 +75,13 @@
     <Compile Include="GameState.cs" />
     <Compile Include="GameStateBuilder.cs" />
     <Compile Include="GameStateSingleton.cs" />
+    <Compile Include="CloseBulletHandler\HomingCloseBulltetHandler.cs" />
     <Compile Include="IBullet.cs" />
     <Compile Include="IIterator.cs" />
     <Compile Include="Iterator.cs" />
     <Compile Include="ParkinsonsChaser.cs" />
     <Compile Include="StraightChaser.cs" />
+    <Compile Include="CloseBulletHandler\StraightCloseBulletHandler.cs" />
     <Compile Include="Strategies\HomingBuletStrategy.cs" />
     <Compile Include="Strategies\IBulletMovementStrategy.cs" />
     <Compile Include="IGameStateBuilder.cs" />

@@ -44,6 +44,8 @@ namespace Chaser.UI
                 _facade.LoadSave();
             }
 
+            if (player.State.Health <= 0) return;
+
             if (_userInputConfiguration.Up && player.WillNotCollide(0, -1))
             {
                 player.State.Y -= player.State.Velocity;

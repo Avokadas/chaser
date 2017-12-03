@@ -29,7 +29,7 @@ namespace Chaser.Tests
         {
             var factory = new DefaultSpriteFactory();
 
-            var bullet = new Bullet(default(Directions), null);
+            var bullet = new Bullet(default(Directions), null, null);
             var chaser = new StraightChaser();
 
             var bulletSprite = factory.CreateSprite(bullet);
@@ -44,7 +44,7 @@ namespace Chaser.Tests
             GameStateSingleton.Instance.State.Player.State.X = 100;
             GameStateSingleton.Instance.State.Player.State.Y = 100;    
             
-            var bullet = new Bullet(Directions.Left, new NullTravelBulletStrategy());
+            var bullet = new Bullet(Directions.Left, new NullTravelBulletStrategy(), null);
             GameStateSingleton.Instance.State.Bullets.Add(bullet);
 
             IBulletMovementStrategy homingMoveStrategy = new HomingBuletStrategy();

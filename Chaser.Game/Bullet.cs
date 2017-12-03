@@ -11,8 +11,11 @@ namespace Chaser.Game
         public readonly IBulletMovementStrategy Strategy;
         private readonly Clock _timer = new Clock();
         public Directions Direction { get; }
+        private CloseBulletHandler closeBulletHandler;
 
-        public Bullet(Directions direction, IBulletMovementStrategy strategy)
+        public Bullet(Directions direction, 
+            IBulletMovementStrategy strategy, 
+            CloseBulletHandler closeBulletHandler)
         {
             Strategy = strategy;
             State.X = GameStateSingleton.Instance.State.Chaser.State.X;
@@ -21,6 +24,7 @@ namespace Chaser.Game
             State.Height = 30;
             Direction = direction;
             State.IsCollidable = true;
+            this.closeBulletHandler = closeBulletHandler;
         }
 
         public List<Command> ReturnNextMove()
@@ -38,6 +42,16 @@ namespace Chaser.Game
 
             if (nextCommand != null)
             {
+                if (Math.Abs(State.X - GameStateSingleton.Instance.State.Player.State.X) < 10 &&
+                    Math.Abs(State.Y - GameStateSingleton.Instance.State.Player.State.Y) < 10)
+                {
+                    closeBulletHandler.HandleBullet(_strategy);
+                    return new List<Command>
+                    {
+                        new BulletDisintegrateCommand(Id)
+                    };
+                }
+
                 return new List<Command>
                 {
                     Strategy.CreateMoveCommand(this)
