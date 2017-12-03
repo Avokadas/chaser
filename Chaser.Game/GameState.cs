@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 using Chaser.Game.Commands;
+using Newtonsoft.Json;
 
 namespace Chaser.Game
 {
@@ -19,6 +23,19 @@ namespace Chaser.Game
             Bullets.ForEach(x => commands.AddRange(x.ReturnNextMove()));
 
             commands.ForEach(x => x.Execute());
+        }
+    }
+
+    public class GameSave
+    {
+        public GameObjectState ChaserState { get; private set; }
+        public GameObjectState PlayerState { get; private set; }
+         
+
+        public GameSave(GameState state)
+        {
+            ChaserState = JsonConvert.DeserializeObject<GameObjectState>(JsonConvert.SerializeObject(state.Chaser.State));
+            PlayerState = JsonConvert.DeserializeObject<GameObjectState>(JsonConvert.SerializeObject(state.Player.State));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Chaser.UI
         private static Sprite _chaserSprite;
         private List<Sprite> _terrainObjects = new List<Sprite>();
         private List<GameObjectState> _bulletStates = new List<GameObjectState>();
-        private ISpriteFactory _spriteFactory;
+        private readonly ISpriteFactory _spriteFactory;
         private Text score;
 
         public RenderingEngine()

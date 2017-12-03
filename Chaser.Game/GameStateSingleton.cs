@@ -17,6 +17,19 @@
 
         public static GameStateSingleton Instance => _instance ?? (_instance = new GameStateSingleton());
 
-        public GameState State { get; set; }
+        public GameState State { get; private set; }
+
+        public GameSave SavedState { get; private set; }
+
+        public void CreateSave()
+        {
+            SavedState = new GameSave(State);
+        }
+
+        public void LoadSave()
+        {
+            State.Chaser.State = SavedState.ChaserState;
+            State.Player.State = SavedState.PlayerState;
+        }
     }
 }

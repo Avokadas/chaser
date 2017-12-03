@@ -4,7 +4,7 @@ namespace Chaser.Game.TerrainObjects
 {
     public class TerrainObjectCollection : ITerrainObjectCollection
     {
-        private ArrayList _items = new ArrayList();
+        public ArrayList Items = new ArrayList();
 
         public Iterator CreateIterator()
         {
@@ -13,13 +13,13 @@ namespace Chaser.Game.TerrainObjects
         
         public int Count
         {
-            get { return _items.Count; }
+            get { return Items.Count; }
         }
         
         public object this[int index]
         {
-            get { return _items[index]; }
-            set { _items.Add(value); }
+            get { return (Items.Count > index)? Items[index] : null; }
+            set { Items.Add(value); }
         }
     }
 }

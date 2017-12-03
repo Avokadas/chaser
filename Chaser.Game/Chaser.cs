@@ -5,11 +5,11 @@ using System;
 
 namespace Chaser.Game
 {
-    public abstract class Chaser : GameObject, ISmart
+    public class Chaser : GameObject, ISmart
     {
         private readonly Clock _timer = new Clock();
 
-        protected Chaser()
+        public Chaser()
         {
             State.X = 500;
             State.Y = 400;
@@ -34,6 +34,9 @@ namespace Chaser.Game
             return commands;
         }
 
-        protected abstract MoveCommand GenerateMoveCommand();
+        protected virtual MoveCommand GenerateMoveCommand()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

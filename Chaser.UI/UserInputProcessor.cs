@@ -7,11 +7,13 @@ namespace Chaser.UI
     {
         private readonly UserInputConfiguration _userInputConfiguration;
         private readonly RenderWindow _window;
+        private GameFacade _facade;
 
         public UserInputProcessor(UserInputConfiguration userInputConfiguration, RenderWindow window)
         {
             _userInputConfiguration = userInputConfiguration;
             _window = window;
+            _facade = new GameFacade(window);
 
             window.KeyPressed += _userInputConfiguration.KeyPressed;
             window.KeyReleased += _userInputConfiguration.KeyReleased;
@@ -25,11 +27,21 @@ namespace Chaser.UI
             {
                 _window.Close();
             }
+
             if (_userInputConfiguration.End)
             {
-                var facade = new GameFacade(_window);
                 GameStateSingleton.Instance.State.GameRunning = false;
-                facade.RemoveAll();
+                _facade.RemoveAll();
+            }
+
+            if (_userInputConfiguration.Save)
+            {
+                _facade.CreateSave();
+            }
+
+            if (_userInputConfiguration.LoadSave)
+            {
+                _facade.LoadSave();
             }
 
             if (_userInputConfiguration.Up && player.WillNotCollide(0, -1))

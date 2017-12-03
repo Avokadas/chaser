@@ -8,13 +8,13 @@ namespace Chaser.Game
 {
     public class Bullet : GameObject, IBullet
     {
-        private readonly IBulletMovementStrategy _strategy;
+        public readonly IBulletMovementStrategy Strategy;
         private readonly Clock _timer = new Clock();
         public Directions Direction { get; }
 
         public Bullet(Directions direction, IBulletMovementStrategy strategy)
         {
-            _strategy = strategy;
+            Strategy = strategy;
             State.X = GameStateSingleton.Instance.State.Chaser.State.X;
             State.Y = GameStateSingleton.Instance.State.Chaser.State.Y;
             State.Width = 30;
@@ -34,13 +34,13 @@ namespace Chaser.Game
                 };
             }
 
-            var nextCommand = _strategy.CreateMoveCommand(this);
+            var nextCommand = Strategy.CreateMoveCommand(this);
 
             if (nextCommand != null)
             {
                 return new List<Command>
                 {
-                    _strategy.CreateMoveCommand(this)
+                    Strategy.CreateMoveCommand(this)
                 };
             }
             //Return a new move command which is build based on Direction properties

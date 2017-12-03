@@ -20,5 +20,15 @@ namespace Chaser.Game
             GameStateSingleton.Instance.State.Bullets = new List<IBullet>();
             GameStateSingleton.Instance.State.Map.TerrainObjects = null;
         }
+
+        public void CreateSave()
+        {
+            GameStateSingleton.Instance.CreateSave();
+        }
+
+        public void LoadSave()
+        {
+            GameStateSingleton.Instance.LoadSave();
+        }
     }
 }
