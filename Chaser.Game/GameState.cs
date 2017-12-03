@@ -30,10 +30,12 @@ namespace Chaser.Game
     {
         public GameObjectState ChaserState { get; private set; }
         public GameObjectState PlayerState { get; private set; }
+        public int Score { get; private set; }
          
 
         public GameSave(GameState state)
         {
+            Score = Score;
             ChaserState = JsonConvert.DeserializeObject<GameObjectState>(JsonConvert.SerializeObject(state.Chaser.State));
             PlayerState = JsonConvert.DeserializeObject<GameObjectState>(JsonConvert.SerializeObject(state.Player.State));
         }

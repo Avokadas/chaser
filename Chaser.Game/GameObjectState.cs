@@ -10,5 +10,6 @@
         public int Height { get; set; }
         public bool IsCollidable { get; set; }
         public int Velocity { get; set; } = 1;
+        public bool Stunned { get; set; }
     }
 }

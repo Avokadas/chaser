@@ -1,4 +1,6 @@
-﻿namespace Chaser.Game
+﻿using System.Windows.Forms;
+
+namespace Chaser.Game
 {
     public class GameStateSingleton
     {
@@ -30,6 +32,7 @@
         {
             State.Chaser.State = SavedState.ChaserState;
             State.Player.State = SavedState.PlayerState;
+            State.Score = SavedState.Score;
         }
     }
 }
