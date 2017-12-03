@@ -16,14 +16,19 @@ namespace Chaser.Game.Commands
         public override void Execute()
         {
             var random = new Random();
+
+            var straightHandler = new StraightCloseBulletHandler();
+            var homingHandler = new HomingCloseBulltetHandler();
+
+            straightHandler.SetSuccessor(homingHandler);
+            
+
             if (random.Next(0, 4) == 0)
             {
-                
-                
-                GameStateSingleton.Instance.State.Bullets.Add(new BulletProxy(new Bullet(Direction, new HomingBuletStrategy())));
+                GameStateSingleton.Instance.State.Bullets.Add(new BulletProxy(new Bullet(Direction, new HomingBuletStrategy(), straightHandler)));
             }
 
-            GameStateSingleton.Instance.State.Bullets.Add(new BulletProxy(new Bullet(Direction, new StraightTravelBulletStrategy())));
+            GameStateSingleton.Instance.State.Bullets.Add(new BulletProxy(new Bullet(Direction, new StraightTravelBulletStrategy(), straightHandler)));
         }
     }
 }

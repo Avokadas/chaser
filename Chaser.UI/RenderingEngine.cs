@@ -74,7 +74,7 @@ namespace Chaser.UI
                 }
             }
 
-            var bulletSprite = _spriteFactory.CreateSprite(new Bullet(Directions.Down, new HomingBuletStrategy()));
+            var bulletSprite = _spriteFactory.CreateSprite(new Bullet(Directions.Down, new HomingBuletStrategy(), null));
             foreach (var state in _bulletStates)
             {
                 bulletSprite.Draw(Window, state);

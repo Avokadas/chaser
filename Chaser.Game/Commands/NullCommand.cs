@@ -21,7 +21,6 @@ namespace Chaser.Game.Commands
 
         public override void Execute()
         {
-            //Does nothing
             GameStateSingleton.Instance.State.Bullets = GameStateSingleton.Instance.State.Bullets.Where(x => x.Id != _id).ToList();
         }
     }
