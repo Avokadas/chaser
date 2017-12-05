@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Chaser.Game.Commands;
 
 namespace Chaser.Game
@@ -29,6 +30,8 @@ namespace Chaser.Game
 
             if(nextMove.Count == 0 || nextMove[0] is BulletDisintegrateCommand)
             {
+                GameStateSingleton.Instance.State.Bullets =
+                    GameStateSingleton.Instance.State.Bullets.Where(x => x.Id != Id).ToList();
                 GameStateSingleton.Instance.State.Score += 5;
             }
 

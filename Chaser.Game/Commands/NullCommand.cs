@@ -12,9 +12,14 @@ namespace Chaser.Game.Commands
     }
     public class BulletDisintegrateCommand : Command
     {
-        private readonly Guid _id;
+        private Guid _id;
 
         public BulletDisintegrateCommand(Guid id)
+        {
+            _id = id;
+        }
+
+        public void OverrideId(Guid id)
         {
             _id = id;
         }
