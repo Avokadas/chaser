@@ -97,7 +97,10 @@ namespace Chaser.UI
             }
             else
             {
-                player.State.X -= player.State.Velocity;
+                if (!player.State.Stunned)
+                {
+                    player.State.X -= player.State.Velocity;
+                }
             }
         }
     }

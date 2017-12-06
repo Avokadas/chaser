@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace Chaser.Game
 {
@@ -7,7 +8,11 @@ namespace Chaser.Game
         public override void VisitGameObject(GameObject obj)
         {
             obj.State.Stunned = true;
-            obj.Timer = new Timer(state => obj.State.Stunned = false, null, 0, 2000);
+            obj.Timer = new Timer(state =>
+            {
+                obj.State.Stunned = false;
+                Console.WriteLine("Unstunned player");
+            }, null, 10000, 0);
         }
     }
 }
